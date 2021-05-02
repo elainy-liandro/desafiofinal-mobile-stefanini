@@ -1,6 +1,5 @@
 **/bin
 **/.mvn
-**/target/
 **/.idea
 **/*.iml
 **/nbactions.xml
