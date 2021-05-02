@@ -2,6 +2,8 @@ package steps;
 
 import static utils.Utils.driver;
 
+import java.util.List;
+
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
@@ -11,7 +13,7 @@ public class ClockSteps {
 
 	ClockPage cp = new ClockPage(driver);
 
-	@Dado("acionar o menu Alarme")
+	@Dado("que o usuario acione o menu Alarme")
 	public void acionarOMenuAlarme() throws Exception {
 
 		cp.acessarMenuAlarme();
@@ -22,7 +24,7 @@ public class ClockSteps {
 
 		cp.acionarBotaoNovoAlarme();
 	}
-
+	
 	@Quando("configurar a hora para {string},{string}")
 	public void configurarAHoraPara(String hora, String periodo) throws Exception {
 
@@ -30,21 +32,22 @@ public class ClockSteps {
 		String horaA = tempo[0];
 		String minutos = tempo[1];
 
-		System.out.println(horaA);
-		System.out.println("=====");
-		System.out.println(minutos);
-
 		cp.clicarNaHora(horaA);
 		cp.clicarNoMinuto(minutos);
 		cp.selecionarOPeriodo(periodo);
 		cp.acionarBotaoOk();
 	}
+	
+	@Quando("o usuario alterar o som do alarme")
+	public void oUsuarioAlterarOSomDoAlarme() throws Exception {
 
-	@Entao("o app adiona um novo alarme")
-	public void oAppAdionaUmNovoAlarme() {
+		cp.alterarSomDoAlarme();
+	}
 
-		System.out.println("VALIDAÇÃO DE UM NOVO ALARME");
-
+	@Entao("o app adiona um novo alarme com as informacoes:")
+	public void oAppAdionaUmNovoAlarmeComAsInformacoes(List<String> dados) {
+		
+		cp.validarInformacoes(dados);
 	}
 
 }

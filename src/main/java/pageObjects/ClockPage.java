@@ -3,6 +3,10 @@ package pageObjects;
 import static org.junit.Assert.assertEquals;
 import static utils.Utils.driver;
 
+import java.util.List;
+
+import javax.xml.xpath.XPathExpression;
+
 import org.openqa.selenium.support.PageFactory;
 
 import io.appium.java_client.AppiumDriver;
@@ -46,6 +50,9 @@ public class ClockPage {
 
 	@AndroidFindBy(xpath = "//android.widget.CheckBox[@text='Repetir']")
 	private MobileElement check;
+	
+	@AndroidFindBy(accessibility = "Navegar para cima")
+	private MobileElement botaoVoltarSomAlarme;
 
 	public void acessarMenuAlarme() throws Exception {
 		System.out.println("acessando menu alarme");
@@ -71,17 +78,16 @@ public class ClockPage {
 		campoEditText.sendKeys("novo alarme");
 	}
 
-	public void interagirComCombo() throws Exception {
+	public void alterarSomDoAlarme() throws Exception {
 		System.out.println("interagindo com o combo");
-
-		acessarMenuAlarme();
-		acionarBotaoNovoAlarme();
 
 		textoCombo.click();
 
 		botaoDispensar.click();
 
 		opcaoCombo.click();
+		
+		botaoVoltarSomAlarme.click();
 	}
 
 	public void interagirComSwitch() throws Exception {
@@ -124,4 +130,17 @@ public class ClockPage {
 		clickPeriodo.click();
 	}
 
+	public void validarInformacoes(List<String> dados) {
+
+		MobileElement infos;
+
+		for (String info : dados) {
+
+			infos = (MobileElement) driver.findElement(MobileBy.xpath("//*[@text='" + info + "']"));
+			System.out.println("Infos Tela: " + infos.getText());
+			assertEquals(info, infos.getText());
+
+		}
+
+	}
 }
