@@ -61,6 +61,11 @@ public class Utils {
 				.release().perform();
 		System.out.println("Fim - Swipe");
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public static void clicarNaTela(int pointX, int pointY) {
+		(new TouchAction(driver)).press(PointOption.point(pointX, pointY)).release().perform();
+	}
 
 	public static void esperarAlgunsSegundos(long t) throws InterruptedException {
 		Thread.sleep(t);

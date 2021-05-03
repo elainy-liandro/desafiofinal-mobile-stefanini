@@ -36,6 +36,10 @@ public class AutenticacaoSteps {
 
 	@Quando("inserir o saldo e clicar em proximo")
 	public void inserir_o_saldo_e_clicar_em_proximo() throws InterruptedException {
+		apo.digitarValor(260, 1290);
+		apo.digitarValor(270, 1480);
+		apo.digitarValor(270, 1480);
+		apo.digitarValor(270, 1480);
 		apo.clicarBotaoProximo_AcessoInicial();
 	}
 

@@ -2,6 +2,7 @@ package pageObjects;
 
 import static utils.Utils.esperarAlgunsSegundos;
 import static utils.Utils.swipe;
+import static utils.Utils.clicarNaTela;
 
 import org.openqa.selenium.support.PageFactory;
 
@@ -55,6 +56,10 @@ public class AutenticacaoPageObject {
 		esperarAlgunsSegundos(3000);
 		swipe(300, 1200, 305, 700);
 //		moedaPadrao_RealBrasileiro.click();
+	}
+	
+	public void digitarValor(int a, int b) {
+		clicarNaTela(a, b);
 	}
 
 	public void clicarBotaoProximo_AcessoInicial() {
