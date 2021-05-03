@@ -58,7 +58,8 @@ public class AutenticacaoPageObject {
 //		moedaPadrao_RealBrasileiro.click();
 	}
 	
-	public void digitarValor(int a, int b) {
+	public void digitarValor(int a, int b) throws InterruptedException {
+		esperarAlgunsSegundos(1000);
 		clicarNaTela(a, b);
 	}
 

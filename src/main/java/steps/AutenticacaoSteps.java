@@ -17,6 +17,23 @@ public class AutenticacaoSteps {
 	public void que_o_usuario_esteja_na_pagina_de_autenticacao() {
 		assertTrue(apo.verificarSeEstaSendoExibidoTextoTelaAutenticacao() == true);
 	}
+	
+	@Dado("que o usuario esteja na tela de boas vindas")
+	public void que_o_usuario_esteja_na_tela_de_boas_vindas() throws InterruptedException {
+		apo.clicarBotaoContinuarSemCriarUmaConta();
+		apo.clicarbotaoComecar_TelaBoasVindas();
+		apo.selecionarMoedaPadrao_RealBrasileiro();
+		apo.clicarBotaoProximo_AcessoInicial();
+		
+		apo.digitarValor(260, 1290);
+		apo.digitarValor(270, 1480);
+		apo.digitarValor(270, 1480);
+		apo.digitarValor(270, 1480);
+		
+		apo.clicarBotaoProximo_AcessoInicial();
+		
+		assertTrue(apo.verificarSeEstaSendoExibidoMenuHambuger_TelaInicial() == true);
+	}
 
 	@Quando("clicar no botao Continuar sem criar uma conta")
 	public void clicar_no_botao_Continuar_sem_criar_uma_conta() {
